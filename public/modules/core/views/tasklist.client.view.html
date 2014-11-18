@@ -1,0 +1,22 @@
+<section data-ng-controller="TaskListController" data-ng-init="find()">
+<div class="tasklist">
+<form class="form-horizontal" role="form">
+  <!-- <div ng-repeat="task in taskData.tasks" class="form-group"> -->
+    <input class="form-control" placeholder="Task" ng-model="name">
+    <input type="checkbox" class="form-control" ng-model="taskComplete">
+    <button ng-click="addTask()" ng-hide="editing">Add</button>
+    <button ng-click="updateTask()" ng-show="editing">Update</button>
+    <button ng-click="cancelEditing()">Cancel</button>
+  <!-- </div> -->
+</form>
+
+  <div ng-repeat="task in tasks" class="container">
+    <div class="task-container row">
+      <div class="task-name col-md-6">{{task.name}}</div>
+      <div class="task-taskComplete col-md-2">{{task.taskComplete}}</div>
+      <div class="task-edit col-md-2"> <button ng-click="editTask(task)">Edit</button></div>
+      <div class="task-delete col-md-2"><button ng-click="deleteTask(task)">Delete</button></div>
+    </div>
+  </div>
+</div>
+</section>
