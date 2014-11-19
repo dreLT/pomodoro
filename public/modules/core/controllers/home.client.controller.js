@@ -4,7 +4,7 @@
 angular.module('core').controller('HomeController', ['$scope', '$interval', 'timer', 'Authentication', function ($scope, $interval, timer, Authentication) {
     $scope.authentication = Authentication;
     
-    var initialTime = 1500000;
+    var initialTime = 1000;
     $scope.currentTime = initialTime;
 
     $scope.startTimer = function() {
@@ -17,6 +17,10 @@ angular.module('core').controller('HomeController', ['$scope', '$interval', 'tim
 
     $scope.resetTimer = function() {
       timer.reset($scope, initialTime);
+    };
+
+    $scope.shortBreakMessage = function() {
+      return (timer.pomodoroDone) && (timer.pomodoroCount % 3 !== 0);
     };
 
     $scope.longBreakMessage = function() {

@@ -1,10 +1,11 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+	function($stateProvider, $urlRouterProvider, $locationProvider) {
 		// Redirect to home view when route not found
 		$urlRouterProvider.otherwise('/');
+		$locationProvider.html5Mode(true);
 
 		// Home state routing
 		$stateProvider
@@ -14,11 +15,13 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			views: {
 				'': {
 					templateUrl: 'modules/core/views/home.client.view.html',
-					controller: 'HomeController'				
+					controller: 'HomeController',
+					authenticate: false
 				},
 				'taskList@home': {
 					templateUrl: 'modules/core/views/tasklist.client.view.html',
-					controller: 'TaskListController'					
+					controller: 'TaskListController',
+					authenticate: true				
 				}
 			}
 		})
@@ -26,14 +29,27 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		.state('shortbreak', {
 			url: '/shortbreak',
 			controller: 'ShortBreakController',
-			templateUrl: 'modules/core/views/home.client.view.html'
+			templateUrl: 'modules/core/views/home.client.view.html',
+			authenticate: false
 		})
 
 		.state('longbreak', {
 			url: '/longbreak',
 			controller: 'LongBreakController',
-			templateUrl: 'modules/core/views/home.client.view.html'
+			templateUrl: 'modules/core/views/home.client.view.html',
+			authenticate: false
 		})
 
 	}
 ]);
+
+// app.run(function($rootScope, $state, AuthenticationService) {
+
+//     $rootScope.$on("$stateChangeStart",
+//         function(event, toState, toParams, fromState, fromParams) {
+//             if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
+//                 $state.go("login");
+//                 event.preventDefault();
+//             }
+//         });
+// });

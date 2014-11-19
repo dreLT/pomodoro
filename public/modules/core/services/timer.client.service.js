@@ -10,6 +10,8 @@ angular.module('core').service('timer', function timer($interval) {
       //currentTime: 1500000,
       pomodoroCount: 0,
 
+      pomodoroDone: false,
+
       interval: undefined,
 
       start: function(scope) {
@@ -17,13 +19,14 @@ angular.module('core').service('timer', function timer($interval) {
         this.interval = $interval(function() {
           if (scope.currentTime > 0) {
             scope.currentTime = scope.currentTime - 1000;
-            console.log(scope.currentTime);
           }
           else {
             // Ring Bell
-            self.pomodoroCount = self.pomodoroCount + 1;
+            if (!self.pomodoroDone) {
+              self.pomodoroCount = self.pomodoroCount + 1;
+            }
+            self.pomodoroDone = true;
             $interval.cancel(self.interval);
-            
           }
         }, 1000);
       },
@@ -33,6 +36,7 @@ angular.module('core').service('timer', function timer($interval) {
       reset: function(scope, initialTime) {
         this.stop();
         scope.currentTime = initialTime;
+        self.pomodoroDone = false;
       }
     }
 
