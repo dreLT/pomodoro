@@ -6,7 +6,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="/#!/" class="navbar-brand">pomodoro</a>
+		<a href="/" class="navbar-brand">pomodoro</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -24,6 +24,12 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+			<li ui-route="/shortbreak" ng-class="{active: $uiRoute}">
+				<a href="/#!/shortbreak">Short Break</a>
+			</li>
+			<li ui-route="/longbreak" ng-class="{active: $uiRoute}">
+				<a href="/#!/longbreak">Long Break</a>
+			</li>
 			<li ui-route="/signup" ng-class="{active: $uiRoute}">
 				<a href="/#!/signup">Sign Up</a>
 			</li>

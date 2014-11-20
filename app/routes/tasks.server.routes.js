@@ -5,6 +5,9 @@ module.exports = function(app) {
 	var tasks = require('../../app/controllers/tasks.server.controller');
 
 	// Tasks Routes
+	// app.route('/tasksList@Home')
+	// 	.get(users.requiresLogin, tasks.list)
+
 	app.route('/tasks')
 		.get(tasks.list)
 		.post(users.requiresLogin, tasks.create);

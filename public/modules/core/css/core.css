@@ -13,3 +13,19 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+/* Custom Styles */
+
+.timer {
+  font-size: 130px;
+  text-align: center;
+}
+
+.timer-controls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.timer-controls button {
+  margin: 0 20px;
+}

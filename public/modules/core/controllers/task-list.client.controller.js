@@ -97,8 +97,7 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
       $scope.taskComplete = '';
       taskBeingEdited = undefined;
     }
+
   }
-
-
 
 ]);

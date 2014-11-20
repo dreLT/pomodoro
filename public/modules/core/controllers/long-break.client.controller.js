@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('core').controller('LongBreakController', ['$scope', '$interval', 'timer', function ($scope, $interval, timer) {
-		var initialTime = 900000;
+		var initialTime = 1000; //900000
     $scope.currentTime = initialTime;
 
     $scope.startTimer = function() {

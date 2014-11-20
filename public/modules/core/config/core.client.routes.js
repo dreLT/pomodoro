@@ -5,7 +5,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 	function($stateProvider, $urlRouterProvider, $locationProvider) {
 		// Redirect to home view when route not found
 		$urlRouterProvider.otherwise('/');
-		$locationProvider.html5Mode(true);
+		//$locationProvider.html5Mode(true);
 
 		// Home state routing
 		$stateProvider
@@ -16,7 +16,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 				'': {
 					templateUrl: 'modules/core/views/home.client.view.html',
 					controller: 'HomeController',
-					authenticate: false
 				},
 				'taskList@home': {
 					templateUrl: 'modules/core/views/tasklist.client.view.html',
@@ -29,15 +28,13 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 		.state('shortbreak', {
 			url: '/shortbreak',
 			controller: 'ShortBreakController',
-			templateUrl: 'modules/core/views/home.client.view.html',
-			authenticate: false
+			templateUrl: 'modules/core/views/shortbreak.client.view.html',
 		})
 
 		.state('longbreak', {
 			url: '/longbreak',
 			controller: 'LongBreakController',
-			templateUrl: 'modules/core/views/home.client.view.html',
-			authenticate: false
+			templateUrl: 'modules/core/views/longbreak.client.view.html',
 		})
 
 	}
