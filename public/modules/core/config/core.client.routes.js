@@ -19,8 +19,8 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 				},
 				'taskList@home': {
 					templateUrl: 'modules/core/views/tasklist.client.view.html',
-					controller: 'TaskListController',
-					authenticate: true				
+					controller: 'TaskListController'
+					//authenticate: true				
 				}
 			}
 		})
@@ -35,7 +35,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 			url: '/longbreak',
 			controller: 'LongBreakController',
 			templateUrl: 'modules/core/views/longbreak.client.view.html',
-		})
+		});
 
 	}
 ]);

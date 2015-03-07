@@ -1,11 +1,15 @@
 <section data-ng-controller="ShortBreakController">
-  <div>
-    <div class="timer">{{ currentTime | timecode }}</div>
-    <button ng-click="startTimer()">Start</button>
-    <button ng-click="stopTimer()">Stop</button>
-    <button ng-click="resetTimer()">Reset</button>
+<div>
+  <div class="timer-title">Break time</div>
+  <div class="timer">{{ currentTime | timecode }}
+    <div class="return-to-work-message" ng-show="currentTime === 0">
+      <a href="/">Return to work</a>
+    </div>
   </div>
-  <div ng-show="currentTime === 0">
-    <a href="/">Return to work</a>
- </div>
+  <div class="timer-controls">
+    <button type="button" class="btn btn-success btn-lg" ng-click="startTimer()">Start</button>
+    <button type="button" class="btn btn-danger btn-lg" ng-click="stopTimer()">Stop</button>
+    <button type="button" class="btn btn-primary btn-lg" ng-click="resetTimer()">Reset</button>
+  </div>
+</div>
 </section>

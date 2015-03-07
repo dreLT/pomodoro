@@ -7,6 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', '$interval', 'tim
     $scope.authenticated = (Authentication.user !== '');
     
     var initialTime = 1000;
+
     $scope.currentTime = initialTime;
 
     $scope.startTimer = function() {

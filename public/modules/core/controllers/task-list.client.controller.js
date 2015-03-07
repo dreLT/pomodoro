@@ -1,27 +1,14 @@
-//'use strict';
+'use strict';
 
-angular.module('core').controller('TaskListController', ['$scope', '$stateParams', '$location', 'Tasks',
-	function($scope, $stateParams, $location, Tasks) {
+angular.module('core').controller('TaskListController', ['$scope', '$stateParams', '$location', 'Tasks', 'timer',
+	function($scope, $stateParams, $location, Tasks, timer) {
 
     var taskCount = 1;
     $scope.taskLimitReached = function() {
       return taskCount > 10;
-    }
-
-
-    $scope.createTask = function() {
-      $scope.tasks.push({});
-      taskCount++;
     };
 
-    $scope.deleteTask = function() {
-      var selectedTask = $scope.taskData.tasks.indexOf($scope.task);
-      $scope.taskData.tasks.splice(selectedTask, 1);
-      taskCount--;
-    };
-
-	
-
+    $scope.taskHover = false;
 
   // Create new Task
     $scope.addTask = function() {
@@ -42,12 +29,14 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
       saved.then(function () {
         $scope.find();
       });
+      $scope.adding = false;
     };
 
     // Remove existing Task
     $scope.deleteTask = function(task) {
       if ( task ) { 
         task.$remove();
+        $scope.editing = false;
 
         for (var i in $scope.tasks) {
           if ($scope.tasks [i] === task) {
@@ -61,7 +50,7 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
 
     // Update existing Task
     $scope.updateTask = function() {
-      task = taskBeingEdited;
+      var task = taskBeingEdited;
       task.name = this.name;
       task.taskComplete = this.taskComplete;
       task.$update(function() {
@@ -89,15 +78,42 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
       $scope.name = task.name;
       $scope.taskComplete = task.taskComplete;
       taskBeingEdited = task;
-    }
+    };
 
     $scope.cancelEditing = function () {
       $scope.editing = false;
+      $scope.adding = false;
       $scope.name = '';
       $scope.taskComplete = '';
       taskBeingEdited = undefined;
-    }
+    };
 
+    // Add Brand New Task
+    $scope.addingNewTask = function() {
+      $scope.adding = true;
+    };
+
+    // Mark Task Complete
+    $scope.completeTask = function(task) {
+      task.taskComplete = true;
+    };
+
+    // Undo Mark Task Complete
+    $scope.undoCompleteTask = function(task) {
+      task.taskComplete = false;
+    };
+
+    // Auto-remove Completed Tasks on Timer Completion
+    $scope.cleanCompleted = function() {
+      //if ($scope.currentTime === 0) {
+        for (var i = 0; i < $scope.tasks.length; i++) {
+          var task = $scope.tasks[i];
+          if (task.taskComplete) {
+            $scope.tasks.splice(i, 1);
+            task.$remove();
+          }
+        }
+      };
   }
 
 ]);

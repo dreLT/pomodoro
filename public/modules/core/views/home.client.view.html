@@ -1,17 +1,20 @@
 <div>
-  <div class="timer">{{ currentTime | timecode }}</div>
+  <div class="timer-title">Get to work</div>
+  <div class="timer">{{ currentTime | timecode }}
+  	<div class="break-message" ng-show="shortBreakMessage()">
+  		<a href="#!/shortbreak">Take a short break?</a>
+  	</div>
+  	<div class="break-message" ng-show="longBreakMessage()">
+  		<a href="#!/longbreak">Take a long break?</a>
+  	</div>
+  </div>
   <div class="timer-controls">
-	  <button ng-click="startTimer()">Start</button>
-	  <button ng-click="stopTimer()">Stop</button>
-	  <button ng-click="resetTimer()">Reset</button>
+	  <button type="button" class="btn btn-success btn-lg" ng-click="startTimer()">Start</button>
+	  <button type="button" class="btn btn-danger btn-lg" ng-click="stopTimer()">Stop</button>
+	  <button type="button" class="btn btn-primary btn-lg" ng-click="resetTimer()">Reset</button>
 	</div>
 </div>
-<div ng-show="shortBreakMessage()">
-  <a href="#!/shortbreak">Take a short break</a>
-</div>
-<div ng-show="longBreakMessage()">
-  <a href="#!/longbreak">Take a long break</a>
-</div>
+
 <div ui-view="taskList"></div>
 
 <!-- 

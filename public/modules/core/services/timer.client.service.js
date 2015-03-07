@@ -15,12 +15,13 @@ angular.module('core').service('timer', function timer($interval) {
       interval: undefined,
 
       start: function(scope) {
-        self = this;
+        var self = this;
         this.interval = $interval(function() {
           if (scope.currentTime > 0) {
             scope.currentTime = scope.currentTime - 1000;
           }
           else {
+            //scope.cleanCompleted();
             // Ring Bell
             if (!self.pomodoroDone) {
               self.pomodoroCount = self.pomodoroCount + 1;
@@ -36,9 +37,17 @@ angular.module('core').service('timer', function timer($interval) {
       reset: function(scope, initialTime) {
         this.stop();
         scope.currentTime = initialTime;
-        self.pomodoroDone = false;
+        this.pomodoroDone = false;
       }
-    }
+      // cleanCompleted: function(scope) {
+      //   console.log(scope.tasks);
+      //   for (var i in scope.tasks) {
+      //     if (taskComplete) {
+      //       scope.tasks.splice(i, 1);
+      //     }
+      //   }
+      // }
+    };
 
     // AngularJS will instantiate a singleton by calling "new" on this function
   });

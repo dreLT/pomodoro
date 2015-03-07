@@ -16,16 +16,92 @@
 
 /* Custom Styles */
 
-.timer {
-  font-size: 130px;
+.timer-title {
   text-align: center;
+  margin-top: 49px;
+  font-size: 47px;
+}
+
+.timer {
+  font-size: 150px;
+  text-align: center;
+}
+
+.break-message {
+  transition: all 5s ease;
+  position: absolute;
+  font-size: 24px;
+  right: 259px;
+  top: 257px;
+}
+
+.return-to-work-message {
+  position: absolute;
+  font-size: 24px;
+  left: 170px;
+  top: 90px;
+}
+
+.break-message, .return-to-work-message a {
+  text-decoration: none;
 }
 
 .timer-controls {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px 0;  
 }
 
 .timer-controls button {
   margin: 0 20px;
+  width: 120px;
+  height: 70px;
+  font-size: 24px;
+}
+
+/* Login Prompt */
+
+.login-prompt {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 60px;
+}
+
+/* Add Task Form */
+
+.add-task-form {
+  text-align: center;
+}
+
+.add-task-input {
+  width: 40%;
+  display: inline-block;
+}
+
+/* Task List */
+
+.task-container {
+  text-align: center;
+}
+
+.task-container .task {
+  display: inline-block;
+  float: none;
+  text-align: center;
+  /*margin-right: -4px;*/
+  border: 1px solid black;
+  height: 250px;
+}
+
+.task-icons {
+  position: relative;
+  bottom: 10px;
+}
+
+.task-icon {
+  cursor: pointer;
+  margin-right: 35px;
+}
+
+i.task-icon:nth-child(3) {
+  margin-right: 0;
 }
