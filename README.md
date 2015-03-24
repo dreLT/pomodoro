@@ -1,6 +1,6 @@
 # Pomodoro Time Management App
 
-A web application that helps manage one's time to increase work productivity and quality based on the Pomodoro time management method. Essentially, this method recommends 25 minutes working period divided by 5 minute breaks. This app makes this easy by providing countdown timers, which can be started, paused, and reset at any time by the user. The app also features a task list (in the form of sticky notes); the user can freely add and delete tasks that they plan to get done. To use the task list, be sure to first register and log in via the top-right navigation area.
+A web application that helps manage one's time during the work day to increase work productivity and quality. The design is based on the Pomodoro Method, which recommends 25-minutes working periods divided by 5-minute breaks. To keep track of these periods, this app provides countdown timers, which the user can start, pause, and reset at any time. It also features a task list (in the form of sticky notes), enabling the user to freely add tasks they plan to accomplish and delete completed ones. To use the task list, be sure to first register and log in (these links are located in the top right-hand corner of the navigation bar).
 
 ## The Stack
 This app runs on a [MEAN.JS](http://meanjs.org) stack, which contains the following frameworks:

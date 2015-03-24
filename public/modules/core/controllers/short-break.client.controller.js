@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('core').controller('ShortBreakController', ['$scope', '$interval', 'timer', function ($scope, $interval, timer) {
-		var initialTime = 3000;
+		var initialTime = 300000;
     $scope.currentTime = initialTime;
 
     $scope.startTimer = function() {
