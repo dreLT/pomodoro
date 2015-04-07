@@ -308,23 +308,34 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
     // Mark Task Complete
     $scope.completeTask = function(task) {
       task.taskComplete = true;
-      console.log($scope.tasks);
+      task.$update(function() {
+        $scope.taskComplete = true;
+      }, function(errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
     };
 
     // Undo Mark Task Complete
     $scope.undoCompleteTask = function(task) {
       task.taskComplete = false;
+      task.$update(function() {
+        $scope.taskComplete = '';
+      }, function(errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
     };
 
     // Auto-remove Completed Tasks on Timer Completion
-    $scope.cleanCompleted = function() {
+    //$scope.cleanCompleted = function() {
       //if ($scope.currentTime === 0) {
-        for (var i in $scope.tasks) {
-          if ($scope.tasks[i].taskComplete === true) {
-            $scope.tasks.splice($scope.tasks[i], 1);
-            $scope.tasks[i].$remove();
-          }
-        }
+        // for (var i in $scope.tasks) {
+        //   if ($scope.tasks[i].taskComplete) {
+        //     $scope.tasks.splice($scope.tasks[i], 1);
+        //     var toDeleteTask = $scope.tasks[i];
+        //     toDeleteTask.$remove();
+        //   }
+        // }
+
         // console.log($scope.tasks);
         // var completedTasks = [];
         // for (var i = 0; i < $scope.tasks.length; i++) {
@@ -340,7 +351,7 @@ angular.module('core').controller('TaskListController', ['$scope', '$stateParams
         //   $scope.tasks.splice(toDeleteIndex, 1);
         //   toDeleteTask.$remove();
         // }
-      };
+      //};
   }
 
 ]);
