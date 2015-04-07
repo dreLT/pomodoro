@@ -66,14 +66,33 @@
   margin-top: 60px;
 }
 
+/* Add Task and Clean buttons */
+
+.container {
+  text-align: center;
+}
+
+.container button.add-task {
+  margin-right: 31px;
+}
+
+.container button.clean-task {
+  margin-right: 36px;
+}
+
 /* Add Task Form */
 
 .add-task-form {
   text-align: center;
+  margin-top: 28px;
+}
+
+.add-task-form button {
+  margin-left: 12px;
 }
 
 .add-task-input {
-  width: 40%;
+  width: 350px;
   display: inline-block;
 }
 
@@ -81,6 +100,7 @@
 
 .task-container {
   text-align: center;
+  margin: 10px 0 33px 0;
 }
 
 .task-container .task {
@@ -90,18 +110,44 @@
   /*margin-right: -4px;*/
   border: 1px solid black;
   height: 250px;
+  width: 250px !important;
+  background-color: rgb(253, 255, 163);
+  padding-top: 33px;
+  margin-right: 21px;
+  overflow: hidden;
+  margin-top: 13px;
+  position: relative;
+}
+
+/*.task-container .task:nth-child(3n) {
+  margin-right: 0;
+}*/
+
+.task-container .task .task-name {
+  margin: 14px 0px;
+  font-size: 19px;
 }
 
 .task-icons {
-  position: relative;
   bottom: 10px;
+  position: absolute;
+  top: 14px;
+  left: 18px;
 }
 
 .task-icon {
   cursor: pointer;
-  margin-right: 35px;
+  margin-right: 10px;
+}
+
+.task-icon span {
+  margin-left: 5px;
 }
 
 i.task-icon:nth-child(3) {
   margin-right: 0;
+}
+
+i.task-icon.complete-delete {
+  margin-left: 82px;
 }

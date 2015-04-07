@@ -1,20 +1,29 @@
 # Pomodoro Time Management App
 
-A web application that helps manage one's time during the work day to increase work productivity and quality. The design is based on the Pomodoro Method, which recommends 25-minutes working periods divided by 5-minute breaks. To keep track of these periods, this app provides countdown timers, which the user can start, pause, and reset at any time. It also features a task list (in the form of sticky notes), enabling the user to freely add tasks they plan to accomplish and delete completed ones. To use the task list, be sure to first register and log in (these links are located in the top right-hand corner of the navigation bar).
+A single-page web application that helps one manage time during the work day and increase productivity and work quality. This app's functionality is based on the Pomodoro time management method, which recommends 25-minutes work periods followed by 5-minute breaks. The app keeps track of these periods with countdown timers, which the user can start, pause, and reset at any time. It also features a task list (in the form of sticky notes); tasks can be added, marked "done", and deleted. 
+
+**The app is live:** [http://pomodoromgmt.herokuapp.com/](http://pomodoromgmt.herokuapp.com/) 
+
+**Important:**  
+To see the task list in action, simply login with the following credentials -    
+Username: andre   
+Password: abcd1234  
+
+To add a task, simply click "Add Task". Hover over a task to see options to edit, delete, and mark a task "complete". Once a task is marked complete, hover over it to see options to undo marking it complete, or delete the task.
 
 ## The Stack
 This app runs on a [MEAN.JS](http://meanjs.org) stack, which contains the following frameworks:
 * [AngularJS](https://angularjs.org/) - For the app's frontend functionality
-* [MongoDB](http://mongodb.org/) and [Express](http://expressjs.com/) - For user authentication
+* [MongoDB](http://mongodb.org/) and [Express](http://expressjs.com/) - For the database and user authentication, respectively
 
 ### Fontend File Structure
-The files containing the app's frontend functionality are located in: `/public/modules/core/`
-* `views/` - HTML views for each main section of the app, which are connected to the AngularJS controllers
-* `controllers/` - AngularJS controllers corresponding to each of these views
-* `config/core.client.routes.js` handles all of the frontend routing for the app's single page architecture
-* `services/timer.client.service.js` provides functionality for starting, stopping, and resetting the timer
-* `filters/timecode.client.filer.js` contains the filter that converts milliseconds into "0:00" format
-* `css/core.css` - The CSS file for styling the application
+The app's frontend functionality is located in: `/public/modules/core/`
+* `views/` - HTML views for each part of the app, linked up to the AngularJS controllers
+* `controllers/` - AngularJS controllers associated with each of these views
+* `config/core.client.routes.js` handles frontend routing for single-page architecture
+* `services/timer.client.service.js` contains functionality for starting, stopping, and resetting the timers
+* `filters/timecode.client.filer.js` contains the filter that converts milliseconds into the timer's "0:00" format
+* `css/core.css` - The CSS file containing the app's styles
 
 ## Installation
 
@@ -46,6 +55,7 @@ $ npm install
 
 ## Progress
 
-### To do
+### Still to do
 * Add a universal "Ping" sound once timer reaches 0:00 so that user knows his/her time is up regardless of where they are on their system.
-* Stlying: More styling is needed, especially for the sticky notes, which could look more like sticky notes! (for example, using a black sharpee font for the text on the notes). It would also be great to animate adding, deleting, and hovering over notes using CSS3 animations.
+* Working on a button that will delete all tasks that have been marked complete by the user ("Clear Completed Tasks")
+* Stlying: More styling needs to be added, especially to the sticky notes (a more realistic sticky-note graphic, a "marker" like font for the task name, an "X" overlay on completed tasks, CSS3 animations).

@@ -1,27 +1,30 @@
 <section data-ng-controller="TaskListController" data-ng-init="find()">
   <div class="tasklist" ng-show="authenticated">
     <div class="container">
+      <button type="button" class="btn btn-success btn-lg add-task" ng-click="addingNewTask()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add Task</button>
+      <!-- 'Clean Completed' button - Still working on functionality -->
+      <!-- <button class="btn btn-primary btn-lg clean-task" ng-click="cleanCompleted()">Clean Completed</button> -->
+      </div>
       <form ng-show="editing || adding" class="add-task-form form-horizontal" role="form">
-        <input class="add-task-input form-control" placeholder="Task" ng-model="name"><button ng-click="addTask()" ng-hide="editing">Add</button><button ng-click="updateTask()" ng-show="editing">Update</button><button ng-click="cancelEditing()">Cancel</button><button ng-click="cleanCompleted()">Clean</button>
-        <!-- <input type="checkbox" class="form-control" ng-model="taskComplete"> -->
+        <input class="add-task-input form-control" placeholder="Task" ng-model="name">
+        <button ng-click="addTask()" ng-hide="editing">Add</button>
+        <button ng-click="updateTask()" ng-show="editing">Update</button>
+        <button ng-click="cancelEditing()">Cancel</button>
       </form>
       <div class="task-container row row-centered">
-        <div ng-repeat="task in tasks" ng-mouseover="taskHover = true" ng-mouseleave="taskHover = false" class="task col-md-3 col-centered">{{task.name}}<br />{{task.taskComplete}}<br />
+        <div ng-repeat="task in tasks" ng-mouseover="taskHover = true" ng-mouseleave="taskHover = false" class="task">
+          <p class="task-name">{{task.name}}</p>
+          <p ng-show="task.taskComplete">Task Complete</p>
           <div class="task-icons">
-            <i ng-click="deleteTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-minus-circle">Delete</i>
-            <i ng-click="editTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-pencil">Edit</i>
-            <i ng-click="completeTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-check-circle">Mark Done</i>
-            <i ng-click="undoCompleteTask(task)" ng-show="task.taskComplete" class="task-icon fa fa-undo">Undo</i>
+            <!-- Options on hover before task is marked 'complete' -->
+            <i ng-click="deleteTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-minus-circle"><span>Delete</span></i>
+            <i ng-click="editTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-pencil"><span>Edit</span></i>
+            <i ng-click="completeTask(task)" ng-show="!task.taskComplete && taskHover" class="task-icon fa fa-check-circle"><span>Mark Done</span></i>
+            <!-- Options on hover after task is marked 'complete' -->
+            <i ng-click="undoCompleteTask(task)" ng-show="task.taskComplete && taskHover" class="task-icon fa fa-undo"><span>Undo</span></i>
+            <i ng-click="deleteTask(task)" ng-show="task.taskComplete && taskHover" class="task-icon fa fa-minus-circle complete-delete"><span>Delete</span></i>
           </div>
-        <!-- <div class="task-taskComplete col-md-2">{{task.taskComplete}}</div>
-        <div class="task-edit col-md-2"><button ng-click="editTask(task)">Edit</button></div>
-        <div class="task-delete col-md-2"><button ng-click="deleteTask(task)">Delete</button></div> -->
       </div>
-      <div ng-click="addingNewTask()" class="add-task-button">+ Add Task</div>
-      <button ng-click="cleanCompleted()">Clean</button>
     </div>
-  </div>
-  <div class="login-prompt" ng-hide="authenticated">
-    <a href="#!/signin">Login to add tasks</a>
   </div>
 </section>
