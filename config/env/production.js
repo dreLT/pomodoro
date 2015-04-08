@@ -8,7 +8,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
-				'public/lib/font-awesome/dist/css/font-awesome.min.css'
+				'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
